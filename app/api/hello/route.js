@@ -12,7 +12,7 @@ export async function GET(request) {
   }
 
   const maxInt = 4;
-  const randomInt = math.ceil(math.random() * maxInt)
+  const randomInt = Math.ceil(Math.random() * maxInt)
   let randomResponse = responseOptions[randomInt]
   return new Response(randomResponse)
 }
