@@ -3,13 +3,15 @@ import { getRequestContext } from '@cloudflare/next-on-pages'
 export const runtime = 'edge'
 
 export async function GET(request) {
+
+  const myKV = getRequestContext().env.PAGES_AUTHTOKENS
   const userID = request.headers.get("UserID")
 
   if (!userID) {
     return new Response("UserID is missing", { status: 404 })
   }
 
-  const value = await env.PAGES_AUTHTOKENS.get(userID)
+  const value = await myKV.get(userID)
 
   if (!value) {
     return new Response("UserID is not valid", { status: 404 })
