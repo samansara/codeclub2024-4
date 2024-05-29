@@ -22,8 +22,4 @@ export async function GET(request) {
     console.log(authValue)
     return new Response(`User token for UserID:${userID} added to Auth-Token header`, { status: 200 })
   }
-
-
-
-
 }
