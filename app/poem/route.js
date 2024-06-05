@@ -3,10 +3,8 @@ import { getRequestContext } from '@cloudflare/next-on-pages'
 export const runtime = 'edge'
 
 export async function GET(request) {
-  const region = request.cf.region
-  const city = request.cf.city
-
-  return new Response(`You are from ${city}, ${region}`, 200)
+  const region = request.headers.get("cf-region")
+  const city = request.headers.get("cf-ipcity")
 
   if (!city || !region) {
     return new Response("City or Region is null", 403)
